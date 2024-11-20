@@ -1,0 +1,14 @@
+1__global__ void matmul(float* A, float* B, float* C, int N) {
+
+2
+
+int row = blockldx.y * blockDim.y + threadIdx.y; 3 int col = blockldx.x * blockDim.x + threadidx.x;
+
+4
+
+float sum = 0;
+
+5 for (int k = 0; k < N; ++k) {
+
+sum += A[row *N+k] *B[k* N + col];
+ C[row * N + col] = sum;

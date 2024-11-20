@@ -1,0 +1,35 @@
+1 #include <immintrin.h>
+
+2 float dot_product(float* A, float* B, int N) {
+
+3
+
+__m256 sum = _mm256_setzero_ps(); // Initialize sum vector
+
+4
+
+for (int i = 0; i < N; i += 8) {
+
+5
+
+__m256 vecA = _mm256_loadu_ps(&A[i]); // Load 8 elements from A
+
+6
+
+7
+
+__m256 vecB = _mm256_loadu_ps(&B[i]); // Load 8 elements from B
+
+sum = _mm256_add_ps(sum, _mm256_mul_ps(vecA, vecB)); // Multiply and add
+
+8}
+
+9
+
+float result[8];
+
+10_mm256_storeu_ps(result, sum); // Store results
+
+11 return result[0] + result[1] + ... + result[7]; // Final sum
+
+12}

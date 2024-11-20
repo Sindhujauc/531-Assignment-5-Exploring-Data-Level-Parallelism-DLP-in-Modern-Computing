@@ -1,0 +1,13 @@
+import numpy as np
+
+2 #Initialize large arrays
+
+3 A = np.random.rand(1000000)
+
+4 B = np.random.rand(1000000)
+
+5
+
+#Vectorized addition
+
+6 C=A+B
